@@ -7,4 +7,5 @@ export interface SpaceXData {
     event_date_utc: Date;
     details: string;
     article: string;
+    links: {article: string, reddit: string, wikipedia: string}
 }

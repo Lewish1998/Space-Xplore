@@ -29,9 +29,7 @@ const MainContainer = () => {
 
   return (
     <>
-        <p>Welcome to</p>
         {latestLaunch && <Landing launchData={latestLaunch} historicalLaunches={historicalLaunches}/>}
-        {}
     </>
   )
 }
