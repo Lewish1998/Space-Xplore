@@ -6,8 +6,10 @@ const MainContainer = () => {
 
     const baseUrl : string = "https://api.spacexdata.com"
     const latestLaunchUrl : string = "https://api.spacexdata.com/v5/launches/latest?pretty=true"
+    const historicalDataUrl: string = "https://api.spacexdata.com/v3/history"
 
     const [latestLaunch, setLatestLaunch] = useState<SpaceXData | null>(null)
+    const [historicalLaunches, setHistoricalLaunches] = useState<SpaceXData[]>([])
 
     useEffect(() => {
         fetch(latestLaunchUrl)
@@ -16,10 +18,20 @@ const MainContainer = () => {
         .catch(error => console.error("Failed to fetch data.", error));
     }, []);
 
+    useEffect(() => {
+      fetch(historicalDataUrl)
+      .then(res => res.json())
+      .then((data: SpaceXData[]) => setHistoricalLaunches(data))
+      .catch(error => console.error("Failed to fetch data.", error));
+  }, []);
+
+
+
   return (
     <>
         <p>Welcome to</p>
-        {latestLaunch && <Landing launchData={latestLaunch}/>}
+        {latestLaunch && <Landing launchData={latestLaunch} historicalLaunches={historicalLaunches}/>}
+        {}
     </>
   )
 }
