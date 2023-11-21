@@ -47,9 +47,7 @@ const LaunchTable = ({ historicalLaunches }: LaunchTableProps) => {
 
   return (
     <>
-    {/* Idea for modal */}
     <div>
-      <Button onClick={handleOpen}>Open modal</Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -57,12 +55,12 @@ const LaunchTable = ({ historicalLaunches }: LaunchTableProps) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">Name: {selectedLaunch && selectedLaunch.title}</Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>Launch Date: {selectedLaunch && selectedLaunch.event_date_utc.toLocaleString()}</Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>Rocket ID: {selectedLaunch && selectedLaunch.flight_number}</Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>Launchpad Id: {selectedLaunch && selectedLaunch.flight_number}</Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>Success: {selectedLaunch && selectedLaunch.flight_number}</Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>Details: {selectedLaunch && selectedLaunch.flight_number}</Typography>
+          <Typography id="modal-modal-title" variant="h6" component="h2">Name: {selectedLaunch && selectedLaunch.name}</Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>Launch Date: {selectedLaunch && selectedLaunch.date_utc.toLocaleString()}</Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>Rocket ID: {selectedLaunch && selectedLaunch.rocket}</Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>Launchpad Id: {selectedLaunch && selectedLaunch.launchpad}</Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>Success: {selectedLaunch && selectedLaunch.success.toLocaleString()}</Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>Details: {selectedLaunch && selectedLaunch.details}</Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}><a href={selectedLaunch && selectedLaunch.links.article} target="blank">Read more...</a></Typography>
         </Box>
       </Modal>
@@ -75,30 +73,30 @@ const LaunchTable = ({ historicalLaunches }: LaunchTableProps) => {
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
-            <TableCell align="right">Launch Date</TableCell>
-            <TableCell align="right">Rocket ID</TableCell>
-            <TableCell align="right">Details</TableCell>
-            <TableCell align="right">Info</TableCell>
+            <TableCell align="center">Launch Date</TableCell>
+            <TableCell align="center">Rocket ID</TableCell>
+            <TableCell align="center">Details</TableCell>
+            <TableCell align="center">Info</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
                     {historicalLaunches.map((launch, index) => (
                         <TableRow key={index}>
                             <TableCell component="th" scope="row" onClick={() => {console.log('test')}}>
-                                {launch.title}
+                                {launch.name}
                             </TableCell>
-                            <TableCell align="right">{launch.event_date_utc.toLocaleString()}</TableCell>
-                            <TableCell align="right">{launch.flight_number || "No Rocket"}</TableCell>
-                            <TableCell align="right">{launch.details}</TableCell>
+                            <TableCell align="left">{launch.date_utc.toLocaleString()}</TableCell>
+                            <TableCell align="left">{launch.flight_number || "N/A"}</TableCell>
+                            <TableCell align="left">{launch.details || "No details available."}</TableCell>
                             <TableCell 
-                                align="right"
+                                align="left"
                                 sx={{cursor: 'pointer'}}
                                 onClick={() => {
                                   setSelectedLaunch(launch)
                                   handleOpen()
                                   console.log(launch)
                                 }}
-                                >🛈</TableCell> {/*Placeholder image */}
+                                >🛈</TableCell>
                         </TableRow>
                         
                     ))}
