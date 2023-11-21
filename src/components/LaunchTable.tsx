@@ -35,6 +35,7 @@ interface LaunchTableProps {
 const LaunchTable = ({ historicalLaunches }: LaunchTableProps) => {
 
     const [open, setOpen] = useState(false)
+    const [selectedLaunch, setSelectedLaunch] = useState<SpaceXData>()
 
     const handleOpen = () => {
       setOpen(true);
@@ -56,12 +57,13 @@ const LaunchTable = ({ historicalLaunches }: LaunchTableProps) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
+          <Typography id="modal-modal-title" variant="h6" component="h2">Name: {selectedLaunch && selectedLaunch.title}</Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>Launch Date: {selectedLaunch && selectedLaunch.event_date_utc.toLocaleString()}</Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>Rocket ID: {selectedLaunch && selectedLaunch.flight_number}</Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>Launchpad Id: {selectedLaunch && selectedLaunch.flight_number}</Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>Success: {selectedLaunch && selectedLaunch.flight_number}</Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>Details: {selectedLaunch && selectedLaunch.flight_number}</Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}><a href={selectedLaunch && selectedLaunch.links.article} target="blank">Read more...</a></Typography>
         </Box>
       </Modal>
     </div>
@@ -73,21 +75,32 @@ const LaunchTable = ({ historicalLaunches }: LaunchTableProps) => {
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
-            <TableCell align="left">Launch Date</TableCell>
-            <TableCell align="left">Rocket ID</TableCell>
-            <TableCell align="left">Details</TableCell>
+            <TableCell align="right">Launch Date</TableCell>
+            <TableCell align="right">Rocket ID</TableCell>
+            <TableCell align="right">Details</TableCell>
+            <TableCell align="right">Info</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
                     {historicalLaunches.map((launch, index) => (
                         <TableRow key={index}>
-                            <TableCell component="th" scope="row">
+                            <TableCell component="th" scope="row" onClick={() => {console.log('test')}}>
                                 {launch.title}
                             </TableCell>
-                            <TableCell align="right">input date{/*{launch.event_date_utc}*/}</TableCell>
-                            <TableCell align="right">{launch.flight_number}</TableCell>
+                            <TableCell align="right">{launch.event_date_utc.toLocaleString()}</TableCell>
+                            <TableCell align="right">{launch.flight_number || "No Rocket"}</TableCell>
                             <TableCell align="right">{launch.details}</TableCell>
+                            <TableCell 
+                                align="right"
+                                sx={{cursor: 'pointer'}}
+                                onClick={() => {
+                                  setSelectedLaunch(launch)
+                                  handleOpen()
+                                  console.log(launch)
+                                }}
+                                >🛈</TableCell> {/*Placeholder image */}
                         </TableRow>
+                        
                     ))}
                 </TableBody>
       </Table>
