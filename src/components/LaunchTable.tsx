@@ -68,8 +68,8 @@ const LaunchTable = ({ historicalLaunches }: LaunchTableProps) => {
 
 
     <div id="scrollable-container">
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650}} size="small">
+    <TableContainer sx={{opacity: 0.94}} component={Paper}>
+      <Table sx={{ minWidth: 650 }} size="small">
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
