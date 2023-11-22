@@ -22,6 +22,7 @@ const testLatestLaunchData: SpaceXData = {
     }
 
     describe('Latest Launch component', () => {
+          // Ideally change render to a render before all (?)
         it('Renders Latest Launch component with test data', () => {
           render(<LatestLaunch latestLaunch={testLatestLaunchData} />);
 
@@ -30,4 +31,15 @@ const testLatestLaunchData: SpaceXData = {
 
           expect(title).toHaveTextContent(titleText)
         });
+
+        // TBC
+        // it('Correctly formats and displays the date', () => {
+        //   render(<LatestLaunch latestLaunch={testLatestLaunchData} />);
+          
+        //   const launchDate = screen.getByText("Launch Date:/")
+        //   const date = launchDate.textContent;
+        //   const expectedDate = new Date("2006-03-24T22:30:00.000Z")
+
+        //   expect(date).toContain(expectedDate)
+        // })
       });
