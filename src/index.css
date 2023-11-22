@@ -68,9 +68,9 @@ button:focus-visible {
 }
 
 
-body {
-  background: url('../space-3.jpg');
+/* body {
+  background: url('../img/space-3.jpg');
   background-repeat: no-repeat;
   background-size: 100vw;
   background-attachment: fixed;
-}
+} */

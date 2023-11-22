@@ -8,7 +8,7 @@ export interface SpaceXData {
     details: string;
     article: string;
     links: {article: string, reddit: string, wikipedia: string}
-    success: string
+    success: boolean
     crew: []
     ships: []
     capsules: []

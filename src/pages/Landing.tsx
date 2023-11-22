@@ -14,7 +14,7 @@ const Landing = ({launchData, historicalLaunches}: LandingProps) => {
             <div className="landing-heading">
                 <h3>Welcome to</h3>
                 <a href="/"><h1>Space-Xplore</h1></a>
-                {/* <LatestLaunch launchData={launchData} /> */}
+                <LatestLaunch launchData={launchData} />
                 <LaunchTable historicalLaunches={historicalLaunches}/>
             </div>
         </>

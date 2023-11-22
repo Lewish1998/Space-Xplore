@@ -47,6 +47,7 @@ const LaunchTable = ({ historicalLaunches }: LaunchTableProps) => {
   return (
     <>
     <div>
+      
       <Modal
         open={open}
         onClose={handleClose}
@@ -84,8 +85,8 @@ const LaunchTable = ({ historicalLaunches }: LaunchTableProps) => {
                             <TableCell component="th" scope="row" onClick={() => {console.log('test')}}>
                                 {launch.name}
                             </TableCell>
-                            <TableCell align="left">{launch.date_utc.toLocaleString()}</TableCell>
-                            <TableCell align="left">{launch.flight_number || "N/A"}</TableCell>
+                            <TableCell align="center">{launch.date_utc.toLocaleString()}</TableCell>
+                            <TableCell align="center">{launch.flight_number || "N/A"}</TableCell>
                             <TableCell align="left">{launch.details || "No details available."}</TableCell>
                             <TableCell 
                                 align="left"
