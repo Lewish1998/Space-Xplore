@@ -125,9 +125,9 @@ interface LaunchTableProps {
                                 >i</TableCell>
                         </TableRow>
                     ))}
-                </TableBody>
+                  </TableBody>
+                </Table>
                 <TablePagination
-                  sx={{ minWidth: 400 }}
                   rowsPerPageOptions={[5, 10, 25]} // Options for rows per page
                   component="div"
                   count={historicalLaunches.length} // Total number of rows
@@ -137,7 +137,6 @@ interface LaunchTableProps {
                   onRowsPerPageChange={handleChangeRowsPerPage}
                   width={"400px"}
                 />
-      </Table>
     </TableContainer>
     </ThemeProvider>
     </>  

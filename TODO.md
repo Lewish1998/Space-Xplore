@@ -5,5 +5,3 @@
 5. Pagination (done)
 6. Isolate tests for accurate coverage
 7. Move modal to seperate component
-
-add test, style change, lorem ipsum
