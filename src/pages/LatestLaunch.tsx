@@ -1,4 +1,5 @@
 import { SpaceXData } from "../assets/Interfaces"
+import Title from "../components/Title";
 
 interface LatestLaunchProps {
   latestLaunch: SpaceXData
@@ -17,6 +18,7 @@ const formattedDate = formatDate(new Date(latestLaunch.date_utc));
 
   return (
     <div className="landing-launch">
+        <Title />
         <h3>Latest Launch:</h3>
         <p>Launch Date: {formattedDate.date}</p> 
         <p>Launch Time: {formattedDate.time}</p>

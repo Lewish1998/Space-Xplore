@@ -1,7 +1,10 @@
+import Title from "../components/Title"
+
 const About = () => {
   return (
     <>
-        <h1>About</h1>
+      <Title />
+      <h1>About</h1>
     </>
   )
 }

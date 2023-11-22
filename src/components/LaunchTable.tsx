@@ -16,8 +16,7 @@ import TablePagination from '@mui/material/TablePagination';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { useState } from "react";
-import { Button, Grid } from "@mui/material";
-import { number } from "prop-types";
+import { Button } from "@mui/material";
 
 interface LaunchTableProps {
     historicalLaunches: SpaceXData[];
@@ -56,7 +55,7 @@ interface LaunchTableProps {
       setOpen(false);
     }
 
-    const handleChangePage = (event: unknown, newPage: number) => {
+    const handleChangePage = (_event: unknown, newPage: number) => {
       setPage(newPage);
     }
 
@@ -126,9 +125,9 @@ interface LaunchTableProps {
                                 >i</TableCell>
                         </TableRow>
                     ))}
-                </TableBody>
+                  </TableBody>
+                </Table>
                 <TablePagination
-                  sx={{ minWidth: 400 }}
                   rowsPerPageOptions={[5, 10, 25]} // Options for rows per page
                   component="div"
                   count={historicalLaunches.length} // Total number of rows
@@ -138,7 +137,6 @@ interface LaunchTableProps {
                   onRowsPerPageChange={handleChangeRowsPerPage}
                   width={"400px"}
                 />
-      </Table>
     </TableContainer>
     </ThemeProvider>
     </>  
