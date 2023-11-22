@@ -16,8 +16,7 @@ import TablePagination from '@mui/material/TablePagination';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { useState } from "react";
-import { Button, Grid } from "@mui/material";
-import { number } from "prop-types";
+import { Button } from "@mui/material";
 
 interface LaunchTableProps {
     historicalLaunches: SpaceXData[];
