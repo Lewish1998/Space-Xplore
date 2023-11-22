@@ -8,11 +8,6 @@ import LatestLaunch from "../pages/LatestLaunch";
 
 const MainContainer = () => {
 
-  interface LatestLaunchProps {
-    latestLaunch: SpaceXData;
-
-  }
-
     // const baseUrl : string = "https://api.spacexdata.com";
     const latestLaunchUrl : string = "https://api.spacexdata.com/v5/launches/latest?pretty=true";
     // const historicalDataUrl: string = "https://api.spacexdata.com/v3/history";
@@ -21,6 +16,7 @@ const MainContainer = () => {
     const [latestLaunch, setLatestLaunch] = useState<SpaceXData | null>(null)
     const [historicalLaunches, setHistoricalLaunches] = useState<SpaceXData[]>([])
 
+    // try catch?
     useEffect(() => {
         fetch(latestLaunchUrl)
         .then(res => res.json())

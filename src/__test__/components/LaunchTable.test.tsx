@@ -37,7 +37,7 @@ describe('LaunchTable', () => {
 
   });
 
-  it('Closes modal on click off component', () => {
+  it('Closes modal when close button is clicked', () => {
     const { getByText } = render(
       <LaunchTable historicalLaunches={testHistoricalLaunches} />
     );

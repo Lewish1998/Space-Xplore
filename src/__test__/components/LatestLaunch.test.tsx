@@ -22,12 +22,24 @@ const testLatestLaunchData: SpaceXData = {
     }
 
     describe('Latest Launch component', () => {
-        it('Renders Latest Launch component with test data', () => {
-          render(<LatestLaunch launchData={testLatestLaunchData} />);
+        it('Renders Latest Launch component with test data and checks title', () => {
+          // Ideally change render to a render before all (?)
+          render(<LatestLaunch latestLaunch={testLatestLaunchData} />);
 
           const title = screen.getByRole('heading');
           const titleText = 'Latest Launch'
 
           expect(title).toHaveTextContent(titleText)
         });
+
+        // TBC
+        // it('Correctly formats and displays the date', () => {
+        //   render(<LatestLaunch latestLaunch={testLatestLaunchData} />);
+          
+        //   const launchDate = screen.getByText("Launch Date:/")
+        //   const date = launchDate.textContent;
+        //   const expectedDate = new Date("2006-03-24T22:30:00.000Z")
+
+        //   expect(date).toContain(expectedDate)
+        // })
       });
