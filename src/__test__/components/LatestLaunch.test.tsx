@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react"
 import "@testing-library/jest-dom"
 import { SpaceXData } from "../../assets/Interfaces";
-import LatestLaunch from "../../components/LatestLaunch";
+import LatestLaunch from "../../pages/LatestLaunch";
 
 const testLatestLaunchData: SpaceXData = {
         rocket: 'Rocket',

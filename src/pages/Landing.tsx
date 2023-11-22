@@ -1,6 +1,7 @@
 import { SpaceXData } from "../assets/Interfaces"
-import LatestLaunch from "../components/LatestLaunch";
+import LatestLaunch from "./LatestLaunch";
 import LaunchTable from "../components/LaunchTable";
+import Title from "../components/Title";
 
 
 interface LandingProps {
@@ -8,14 +9,12 @@ interface LandingProps {
     historicalLaunches: SpaceXData[]
 }
 
-const Landing = ({launchData, historicalLaunches}: LandingProps) => {
+const Landing = ({historicalLaunches}: LandingProps) => {
     
     return (
         <>
             <div className="landing-heading">
-                <h3 data-testid="subheading">Welcome to</h3>
-                <a href="/"><h1>Space-Xplore</h1></a>
-                <LatestLaunch launchData={launchData} />
+                <Title />
                 <LaunchTable historicalLaunches={historicalLaunches}/>
             </div>
         </>

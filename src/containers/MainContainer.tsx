@@ -1,8 +1,17 @@
 import { SpaceXData } from "../assets/Interfaces";
 import { useEffect, useState } from "react"
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Landing from "../pages/Landing"
+import Navbar from "../components/Navbar";
+import About from "../pages/About";
+import LatestLaunch from "../pages/LatestLaunch";
 
 const MainContainer = () => {
+
+  interface LatestLaunchProps {
+    latestLaunch: SpaceXData;
+
+  }
 
     // const baseUrl : string = "https://api.spacexdata.com";
     const latestLaunchUrl : string = "https://api.spacexdata.com/v5/launches/latest?pretty=true";
@@ -28,10 +37,17 @@ const MainContainer = () => {
 
 
   return (
-    <>
-        {latestLaunch && <Landing launchData={latestLaunch} historicalLaunches={historicalLaunches}/>}
-    </>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path='/' element={latestLaunch && <Landing launchData={latestLaunch} historicalLaunches={historicalLaunches}/>} />
+        <Route path='/about' element={<About />} />
+        <Route path='/latest-launch' element={latestLaunch && <LatestLaunch latestLaunch={latestLaunch} />} />
+      </Routes>
+    </Router>
   )
 }
 
 export default MainContainer
+
+// {latestLaunch && <Landing launchData={latestLaunch} historicalLaunches={historicalLaunches}/>}

@@ -1,10 +1,10 @@
 import { SpaceXData } from "../assets/Interfaces"
 
 interface LatestLaunchProps {
-  launchData: SpaceXData
+  latestLaunch: SpaceXData
 }
 
-const LatestLaunch = ({ launchData }: LatestLaunchProps) => {
+const LatestLaunch = ({ latestLaunch }: LatestLaunchProps) => {
 
   function formatDate(date_utc: Date): { date: string; time: string } {
     const date = date_utc.toISOString().split('T')[0];
@@ -13,15 +13,15 @@ const LatestLaunch = ({ launchData }: LatestLaunchProps) => {
     return { date, time };
 }
 
-const formattedDate = formatDate(new Date(launchData.date_utc));
+const formattedDate = formatDate(new Date(latestLaunch.date_utc));
 
   return (
     <div className="landing-launch">
         <h3>Latest Launch:</h3>
         <p>Launch Date: {formattedDate.date}</p> 
         <p>Launch Time: {formattedDate.time}</p>
-        <p>Flight Number: {launchData.flight_number}</p>
-        <p>Rocket: {launchData.rocket}</p>
+        <p>Flight Number: {latestLaunch.flight_number}</p>
+        <p>Rocket: {latestLaunch.rocket}</p>
     </div>
   )
 }
