@@ -12,11 +12,12 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import TablePagination from '@mui/material/TablePagination';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-
 import { useState } from "react";
-import { Button } from "@mui/material";
+import { Button, Grid } from "@mui/material";
+import { number } from "prop-types";
 
 interface LaunchTableProps {
     historicalLaunches: SpaceXData[];
@@ -44,14 +45,29 @@ interface LaunchTableProps {
 
     const [open, setOpen] = useState(false)
     const [selectedLaunch, setSelectedLaunch] = useState<SpaceXData>()
+    const [page, setPage] = useState(0)
+    const [rows, setRows] = useState(10)
 
     const handleOpen = () => {
       setOpen(true);
     }
 
     const handleClose = () => {
-      setOpen(false)
+      setOpen(false);
     }
+
+    const handleChangePage = (event: unknown, newPage: number) => {
+      setPage(newPage);
+    }
+
+    const handleChangeRowsPerPage = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setRows(parseInt(e.target.value, 10));
+      setPage(0);
+    }
+
+    const startIndex = page * rows;
+    const endIndex = startIndex + rows;
+    const displayedLaunches = historicalLaunches.slice(startIndex, endIndex);
 
   return (
     <>
@@ -79,8 +95,6 @@ interface LaunchTableProps {
       </Modal>
     </div>
 
-
-    <div id="scrollable-container">
     <TableContainer sx={{opacity: 0.94}} component={Paper}>
       <Table sx={{ minWidth: 650 }} size="small">
         <TableHead>
@@ -93,7 +107,7 @@ interface LaunchTableProps {
           </TableRow>
         </TableHead>
         <TableBody>
-                    {historicalLaunches.map((launch, index) => (
+                    {displayedLaunches.map((launch, index) => (
                         <TableRow key={index}>
                             <TableCell component="th" scope="row">
                                 {launch.name}
@@ -111,12 +125,21 @@ interface LaunchTableProps {
                                 }}
                                 >i</TableCell>
                         </TableRow>
-                        
                     ))}
                 </TableBody>
+                <TablePagination
+                  sx={{ minWidth: 400 }}
+                  rowsPerPageOptions={[5, 10, 25]} // Options for rows per page
+                  component="div"
+                  count={historicalLaunches.length} // Total number of rows
+                  rowsPerPage={rows}
+                  page={page}
+                  onPageChange={handleChangePage}
+                  onRowsPerPageChange={handleChangeRowsPerPage}
+                  width={"400px"}
+                />
       </Table>
     </TableContainer>
-    </div>
     </ThemeProvider>
     </>  
     )
