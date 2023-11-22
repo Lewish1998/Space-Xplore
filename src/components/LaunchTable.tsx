@@ -13,6 +13,8 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 
 import { useState } from "react";
 
@@ -32,7 +34,13 @@ interface LaunchTableProps {
     p: 4,
   };
 
-const LaunchTable = ({ historicalLaunches }: LaunchTableProps) => {
+  const darkTheme = createTheme({
+    palette: {
+      mode: 'dark',
+    },
+  });  
+
+  const LaunchTable = ({ historicalLaunches }: LaunchTableProps) => {
 
     const [open, setOpen] = useState(false)
     const [selectedLaunch, setSelectedLaunch] = useState<SpaceXData>()
@@ -47,6 +55,8 @@ const LaunchTable = ({ historicalLaunches }: LaunchTableProps) => {
 
   return (
     <>
+    <ThemeProvider theme={darkTheme}>
+    <CssBaseline />
     <div>
       <Modal
         open={open}
@@ -96,7 +106,7 @@ const LaunchTable = ({ historicalLaunches }: LaunchTableProps) => {
                                   handleOpen()
                                   console.log(launch)
                                 }}
-                                >🛈</TableCell>
+                                ><i></i></TableCell>
                         </TableRow>
                         
                     ))}
@@ -104,6 +114,7 @@ const LaunchTable = ({ historicalLaunches }: LaunchTableProps) => {
       </Table>
     </TableContainer>
     </div>
+    </ThemeProvider>
     </>  
     )
 }
