@@ -23,7 +23,7 @@ const testLatestLaunchData: SpaceXData = {
 
     describe('Latest Launch component', () => {
         it('Renders Latest Launch component with test data', () => {
-          render(<LatestLaunch launchData={testLatestLaunchData} />);
+          render(<LatestLaunch latestLaunch={testLatestLaunchData} />);
 
           const title = screen.getByRole('heading');
           const titleText = 'Latest Launch'

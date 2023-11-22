@@ -5,3 +5,6 @@
 5. Pagination
 6. Isolate tests for accurate coverage
 7. Move modal to seperate compoenet
+
+
+add comment for table row to be clicked (used "i" instead).

@@ -1,5 +1,4 @@
 import { SpaceXData } from "../assets/Interfaces"
-import LatestLaunch from "./LatestLaunch";
 import LaunchTable from "../components/LaunchTable";
 import Title from "../components/Title";
 
