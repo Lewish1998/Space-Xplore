@@ -10,7 +10,6 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
@@ -23,7 +22,7 @@ interface LaunchTableProps {
   }
 
   const style = {
-    position: 'absolute' as 'absolute',
+    position: 'absolute' as const,
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
@@ -58,6 +57,7 @@ interface LaunchTableProps {
     <ThemeProvider theme={darkTheme}>
     <CssBaseline />
     <div>
+      
       <Modal
         open={open}
         onClose={handleClose}
@@ -78,8 +78,8 @@ interface LaunchTableProps {
 
 
     <div id="scrollable-container">
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650}} size="small">
+    <TableContainer sx={{opacity: 0.94}} component={Paper}>
+      <Table sx={{ minWidth: 650 }} size="small">
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
@@ -95,8 +95,8 @@ interface LaunchTableProps {
                             <TableCell component="th" scope="row" onClick={() => {console.log('test')}}>
                                 {launch.name}
                             </TableCell>
-                            <TableCell align="left">{launch.date_utc.toLocaleString()}</TableCell>
-                            <TableCell align="left">{launch.flight_number || "N/A"}</TableCell>
+                            <TableCell align="center">{launch.date_utc.toLocaleString()}</TableCell>
+                            <TableCell align="center">{launch.flight_number || "N/A"}</TableCell>
                             <TableCell align="left">{launch.details || "No details available."}</TableCell>
                             <TableCell 
                                 align="left"

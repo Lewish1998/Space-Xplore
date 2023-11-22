@@ -1,10 +1,10 @@
 import { SpaceXData } from "../assets/Interfaces"
 
-interface TestProps {
+interface LatestLaunchProps {
   launchData: SpaceXData
 }
 
-const LatestLaunch = ({ launchData }: TestProps) => {
+const LatestLaunch = ({ launchData }: LatestLaunchProps) => {
 
   function formatDate(date_utc: Date): { date: string; time: string } {
     const date = date_utc.toISOString().split('T')[0];
