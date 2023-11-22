@@ -4,7 +4,7 @@ import Landing from "../pages/Landing"
 
 const MainContainer = () => {
 
-    const baseUrl : string = "https://api.spacexdata.com";
+    // const baseUrl : string = "https://api.spacexdata.com";
     const latestLaunchUrl : string = "https://api.spacexdata.com/v5/launches/latest?pretty=true";
     // const historicalDataUrl: string = "https://api.spacexdata.com/v3/history";
     const historicalDataUrl : string = "https://api.spacexdata.com/v4/launches";
