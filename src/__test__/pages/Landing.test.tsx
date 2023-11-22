@@ -67,4 +67,13 @@ describe('Landing Page', () => {
 
       expect(title).toHaveTextContent(titleText)
     })
+
+    it('Has a subheading of Welcome to', () => {
+      render(<Landing launchData={testLaunchData} historicalLaunches={testHistoricalLaunches}/>)
+
+      const subheading = screen.getByTestId('subheading');
+      const subheadingText = 'Welcome to';
+
+      expect(subheading).toHaveTextContent(subheadingText);
+    })
 })

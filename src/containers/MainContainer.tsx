@@ -27,7 +27,6 @@ const MainContainer = () => {
   }, []);
 
 
-
   return (
     <>
         {latestLaunch && <Landing launchData={latestLaunch} historicalLaunches={historicalLaunches}/>}
