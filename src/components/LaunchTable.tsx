@@ -16,6 +16,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 
 import { useState } from "react";
+import { Button } from "@mui/material";
 
 interface LaunchTableProps {
     historicalLaunches: SpaceXData[];
@@ -63,8 +64,10 @@ interface LaunchTableProps {
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+        data-testid="modal"
       >
         <Box sx={style}>
+          <Button data-testid="close-button" sx={{position: 'absolute', top: 0, right: 0}} onClick={handleClose}>X</Button>
           <Typography id="modal-modal-title" variant="h6" component="h2">Name: {selectedLaunch && selectedLaunch.name}</Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>Launch Date: {selectedLaunch && selectedLaunch.date_utc.toLocaleString()}</Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>Rocket ID: {selectedLaunch && selectedLaunch.rocket}</Typography>
@@ -92,21 +95,21 @@ interface LaunchTableProps {
         <TableBody>
                     {historicalLaunches.map((launch, index) => (
                         <TableRow key={index}>
-                            <TableCell component="th" scope="row" onClick={() => {console.log('test')}}>
+                            <TableCell component="th" scope="row">
                                 {launch.name}
                             </TableCell>
                             <TableCell align="center">{launch.date_utc.toLocaleString()}</TableCell>
                             <TableCell align="center">{launch.flight_number || "N/A"}</TableCell>
                             <TableCell align="left">{launch.details || "No details available."}</TableCell>
                             <TableCell 
-                                align="left"
+                                align="center"
                                 sx={{cursor: 'pointer'}}
                                 onClick={() => {
                                   setSelectedLaunch(launch)
                                   handleOpen()
                                   console.log(launch)
                                 }}
-                                ><i></i></TableCell>
+                                >i</TableCell>
                         </TableRow>
                         
                     ))}

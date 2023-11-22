@@ -4,3 +4,4 @@
 4. React Router implimentation
 5. Pagination
 6. Isolate tests for accurate coverage
+7. Move modal to seperate compoenet
