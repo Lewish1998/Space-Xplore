@@ -2,5 +2,6 @@
 
 To run locally:
 1. Clone repo
-2. Run `npm install`
-3. Run `npm run dev`
+2. Run `cd Space-Xplore`
+3. Run `npm install`
+4. Run `npm run dev`
